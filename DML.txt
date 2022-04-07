@@ -1,0 +1,36 @@
+
+
+  CREATE TABLE Custemer (
+	Custemer_id NUMBER(7) CONSTRAINT pk_custemer PRIMARY KEY,
+	Customer_name VARCHAR2(20) NOT NULL,
+	Customer_Tel NUMBER(10),
+);
+
+INSERT INTO Customer(Customer_id,Customer_name,Customer_Tel)
+VALUES ('C01','ALI','71321009'),
+       ('C02','ASMA','77345823');
+
+
+CREATE TABLE Product (
+	Product_id NUMBER(7) CONSTRAINT pk_product PRIMARY KEY,
+	Product_name VARCHAR2(20) NOT NULL,
+	Category VARCHAR2(20),
+	Price NUMBER(10)  unsigned CHECK (NUMBER > 0),
+);
+
+INSERT INTO Product(Product_id,Product_name,Price,Category)
+VALUES ('P01','Samsung Galaxy S20','Smartphone','3299'),
+       ('P02','ASUS Notebook','PC','4599');
+
+
+CREATE TABLE Orders (
+	CONSTRAINT FK_customer_id FOREIGN KEY (Customer_id) REFERENCES Customer (Custemer_id),
+	CONSTRAINT FK_product_id  FOREIGN KEY (Product_id) REFERENCES Product_id (Product_id),
+	OrderDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	Quantity NUMBER(10),
+        Total_amount NUMBER(10),	
+);
+
+INSERT INTO Orders(Customer_id,Product_id,Quantity,Total_amount,OrderDate)
+VALUES ('C01','P02','Null','2','9198'),
+       ('C02','P01','28/05/2020','1','3299');
